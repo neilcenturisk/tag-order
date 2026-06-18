@@ -6,11 +6,11 @@ authors = [
     {name = "Neil Fitzpatrick", email = "neil.fitzpatrick@centurisk.com"}
 ]
 requires-python = ">=3.10"
-dependencies = ["frappe"]
+dependencies = []
 
 [build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
 [tool.bench]
 frappe-dependencies = {frappe = ">=15.0.0"}
