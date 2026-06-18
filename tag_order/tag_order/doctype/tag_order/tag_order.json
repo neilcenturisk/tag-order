@@ -1,0 +1,246 @@
+{
+  "name": "Tag Order",
+  "module": "Tag Order",
+  "doctype": "DocType",
+  "document_type": "Document",
+  "engine": "InnoDB",
+  "naming_rule": "Expression",
+  "autoname": "TAG.#####",
+  "title_field": "client_name",
+  "search_fields": "client_name,contact_name,email",
+  "track_changes": 1,
+  "allow_guest_to_view": 1,
+  "fields": [
+    {
+      "fieldname": "contact_section",
+      "fieldtype": "Section Break",
+      "label": "Contact Information"
+    },
+    {
+      "fieldname": "client_name",
+      "fieldtype": "Data",
+      "label": "Client Name",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "contact_name",
+      "fieldtype": "Data",
+      "label": "Contact Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "contact_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "email",
+      "fieldtype": "Data",
+      "label": "Email",
+      "options": "Email",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "phone",
+      "fieldtype": "Data",
+      "label": "Phone",
+      "options": "Phone",
+      "reqd": 1
+    },
+    {
+      "fieldname": "shipping_section",
+      "fieldtype": "Section Break",
+      "label": "Shipping"
+    },
+    {
+      "fieldname": "address_to_ship",
+      "fieldtype": "Small Text",
+      "label": "Address To Ship",
+      "reqd": 1
+    },
+    {
+      "fieldname": "order_details_section",
+      "fieldtype": "Section Break",
+      "label": "Order Details"
+    },
+    {
+      "fieldname": "order_type",
+      "fieldtype": "Select",
+      "label": "Order Type",
+      "options": "\nInternal\nExternal",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "ink_color",
+      "fieldtype": "Select",
+      "label": "Ink Color",
+      "options": "\nBlack\nRed\nBlue\nGreen\nCustom Color",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "order_details_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "number_of_rolls",
+      "fieldtype": "Int",
+      "label": "Number of Rolls",
+      "reqd": 1,
+      "non_negative": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "starting_number",
+      "fieldtype": "Data",
+      "label": "Starting Number",
+      "reqd": 1
+    },
+    {
+      "fieldname": "tag_text_section",
+      "fieldtype": "Section Break",
+      "label": "Tag Text"
+    },
+    {
+      "fieldname": "line_1",
+      "fieldtype": "Data",
+      "label": "LINE 1",
+      "reqd": 1
+    },
+    {
+      "fieldname": "tag_text_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "line_2",
+      "fieldtype": "Data",
+      "label": "LINE 2",
+      "reqd": 1
+    },
+    {
+      "fieldname": "dates_section",
+      "fieldtype": "Section Break",
+      "label": "Dates & Pricing"
+    },
+    {
+      "fieldname": "required_date",
+      "fieldtype": "Date",
+      "label": "Required Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "order_date",
+      "fieldtype": "Date",
+      "label": "Order Date",
+      "default": "Today",
+      "read_only": 1
+    },
+    {
+      "fieldname": "dates_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "total_price",
+      "fieldtype": "Currency",
+      "label": "Total Price",
+      "read_only": 1,
+      "description": "$175 per roll"
+    },
+    {
+      "fieldname": "optional_section",
+      "fieldtype": "Section Break",
+      "label": "Optional Information"
+    },
+    {
+      "fieldname": "po_number",
+      "fieldtype": "Data",
+      "label": "PO# (Optional)"
+    },
+    {
+      "fieldname": "optional_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "state_tax_exemption",
+      "fieldtype": "Data",
+      "label": "State Tax Exemption # (Optional)"
+    },
+    {
+      "fieldname": "terms_section",
+      "fieldtype": "Section Break",
+      "label": "Terms"
+    },
+    {
+      "fieldname": "agree_to_terms",
+      "fieldtype": "Check",
+      "label": "I agree to the terms to proceed",
+      "reqd": 1
+    },
+    {
+      "fieldname": "internal_section",
+      "fieldtype": "Section Break",
+      "label": "Internal",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "assigned_to",
+      "fieldtype": "Link",
+      "label": "Assigned To",
+      "options": "User"
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "\nSubmitted\nIn Review\nPrinting\nShipped\nComplete\nCancelled",
+      "default": "Submitted",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "internal_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 0,
+      "cancel": 0,
+      "email": 1,
+      "print": 1,
+      "export": 1
+    },
+    {
+      "role": "Agent",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "print": 1,
+      "export": 1
+    },
+    {
+      "role": "Guest",
+      "read": 0,
+      "write": 0,
+      "create": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

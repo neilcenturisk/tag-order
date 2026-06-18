@@ -1,0 +1,163 @@
+{
+  "name": "Tag Order Form",
+  "module": "Tag Order",
+  "doctype": "Web Form",
+  "doc_type": "Tag Order",
+  "title": "Asset Tag Order",
+  "route": "tag-order",
+  "published": 1,
+  "allow_multiple": 1,
+  "allow_edit": 0,
+  "show_sidebar": 0,
+  "login_required": 0,
+  "allow_incomplete": 0,
+  "is_standard": 1,
+  "introduction_text": "",
+  "success_title": "Thank You!",
+  "success_message": "<div style='text-align: center; padding: 20px;'><h3>Your order has been submitted.</h3><p>We'll be in touch with updates on your order status.</p></div>",
+  "success_url": "",
+  "banner_image": "",
+  "web_form_fields": [
+    {
+      "fieldname": "order_type",
+      "fieldtype": "Select",
+      "label": "Order Type",
+      "options": "\nInternal\nExternal",
+      "reqd": 1
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Section Break",
+      "label": "Contact Information"
+    },
+    {
+      "fieldname": "client_name",
+      "fieldtype": "Data",
+      "label": "Client Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "contact_name",
+      "fieldtype": "Data",
+      "label": "Contact Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "email",
+      "fieldtype": "Data",
+      "label": "Email",
+      "reqd": 1
+    },
+    {
+      "fieldname": "phone",
+      "fieldtype": "Data",
+      "label": "Phone",
+      "reqd": 1
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Section Break",
+      "label": "Shipping"
+    },
+    {
+      "fieldname": "address_to_ship",
+      "fieldtype": "Small Text",
+      "label": "Address To Ship",
+      "reqd": 1
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Section Break",
+      "label": "Order Details"
+    },
+    {
+      "fieldname": "ink_color",
+      "fieldtype": "Select",
+      "label": "Ink Color",
+      "options": "\nBlack\nRed\nBlue\nGreen\nCustom Color",
+      "reqd": 1
+    },
+    {
+      "fieldname": "number_of_rolls",
+      "fieldtype": "Int",
+      "label": "Number of Rolls",
+      "reqd": 1,
+      "description": "$175 per roll"
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "starting_number",
+      "fieldtype": "Data",
+      "label": "Starting Number",
+      "reqd": 1
+    },
+    {
+      "fieldname": "required_date",
+      "fieldtype": "Date",
+      "label": "Required Date",
+      "reqd": 1,
+      "description": "Minimum 5 days lead time for external orders"
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Section Break",
+      "label": "Tag Text"
+    },
+    {
+      "fieldname": "line_1",
+      "fieldtype": "Data",
+      "label": "LINE 1",
+      "reqd": 1,
+      "description": "First line printed on the tag"
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "line_2",
+      "fieldtype": "Data",
+      "label": "LINE 2",
+      "reqd": 1,
+      "description": "Second line printed on the tag"
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Section Break",
+      "label": "Optional Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "po_number",
+      "fieldtype": "Data",
+      "label": "PO# (Optional)"
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "state_tax_exemption",
+      "fieldtype": "Data",
+      "label": "State Tax Exemption # (Optional)"
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Section Break",
+      "label": ""
+    },
+    {
+      "fieldname": "agree_to_terms",
+      "fieldtype": "Check",
+      "label": "I agree to the terms to proceed",
+      "reqd": 1
+    }
+  ]
+}

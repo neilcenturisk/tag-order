@@ -1,0 +1,83 @@
+{
+  "name": "Tag Order Workflow",
+  "doctype": "Workflow",
+  "document_type": "Tag Order",
+  "is_active": 1,
+  "workflow_state_field": "status",
+  "states": [
+    {
+      "state": "Submitted",
+      "doc_status": 0,
+      "allow_edit": "System Manager",
+      "style": "Primary"
+    },
+    {
+      "state": "In Review",
+      "doc_status": 0,
+      "allow_edit": "System Manager",
+      "style": "Warning"
+    },
+    {
+      "state": "Printing",
+      "doc_status": 0,
+      "allow_edit": "System Manager",
+      "style": "Info"
+    },
+    {
+      "state": "Shipped",
+      "doc_status": 0,
+      "allow_edit": "System Manager",
+      "style": "Success"
+    },
+    {
+      "state": "Complete",
+      "doc_status": 0,
+      "allow_edit": "System Manager",
+      "style": "Success"
+    },
+    {
+      "state": "Cancelled",
+      "doc_status": 0,
+      "allow_edit": "System Manager",
+      "style": "Danger"
+    }
+  ],
+  "transitions": [
+    {
+      "state": "Submitted",
+      "action": "Review",
+      "next_state": "In Review",
+      "allowed": "System Manager"
+    },
+    {
+      "state": "In Review",
+      "action": "Start Printing",
+      "next_state": "Printing",
+      "allowed": "System Manager"
+    },
+    {
+      "state": "Printing",
+      "action": "Mark Shipped",
+      "next_state": "Shipped",
+      "allowed": "System Manager"
+    },
+    {
+      "state": "Shipped",
+      "action": "Mark Complete",
+      "next_state": "Complete",
+      "allowed": "System Manager"
+    },
+    {
+      "state": "Submitted",
+      "action": "Cancel",
+      "next_state": "Cancelled",
+      "allowed": "System Manager"
+    },
+    {
+      "state": "In Review",
+      "action": "Cancel",
+      "next_state": "Cancelled",
+      "allowed": "System Manager"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+[project]
+name = "tag_order"
+version = "0.0.1"
+description = "Asset Tag Order Management for Centurisk"
+authors = [
+    {name = "Neil Fitzpatrick", email = "neil.fitzpatrick@centurisk.com"}
+]
+requires-python = ">=3.10"
+dependencies = ["frappe"]
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench]
+frappe-dependencies = ["frappe"]
