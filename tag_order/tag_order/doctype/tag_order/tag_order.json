@@ -55,9 +55,31 @@
       "label": "Shipping"
     },
     {
-      "fieldname": "address_to_ship",
-      "fieldtype": "Small Text",
-      "label": "Address To Ship",
+      "fieldname": "address_street",
+      "fieldtype": "Data",
+      "label": "Street Address",
+      "reqd": 1
+    },
+    {
+      "fieldname": "address_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "address_city",
+      "fieldtype": "Data",
+      "label": "City",
+      "reqd": 1
+    },
+    {
+      "fieldname": "address_state",
+      "fieldtype": "Data",
+      "label": "State",
+      "reqd": 1
+    },
+    {
+      "fieldname": "address_zip",
+      "fieldtype": "Data",
+      "label": "Zip Code",
       "reqd": 1
     },
     {
@@ -239,18 +261,98 @@
       "label": "Project Name"
     },
     {
+      "fieldname": "wo_column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "wo_client_name",
+      "fieldtype": "Data",
+      "label": "Client Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_contact_name",
+      "fieldtype": "Data",
+      "label": "Contact Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_address_section",
+      "fieldtype": "Section Break",
+      "label": "Work Order - Address & Contact",
+      "depends_on": "eval:doc.status=='Complete'"
+    },
+    {
+      "fieldname": "wo_address",
+      "fieldtype": "Data",
+      "label": "Address",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_city",
+      "fieldtype": "Data",
+      "label": "City",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_state",
+      "fieldtype": "Data",
+      "label": "State",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_zip",
+      "fieldtype": "Data",
+      "label": "Zip",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_address_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "wo_phone",
+      "fieldtype": "Data",
+      "label": "Phone",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_email",
+      "fieldtype": "Data",
+      "label": "E-Mail",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_po_number",
+      "fieldtype": "Data",
+      "label": "PO#",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_tag_number",
+      "fieldtype": "Data",
+      "label": "Tag #",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_people_section",
+      "fieldtype": "Section Break",
+      "label": "Work Order - People",
+      "depends_on": "eval:doc.status=='Complete'"
+    },
+    {
       "fieldname": "wo_sales_rep",
       "fieldtype": "Data",
       "label": "Sales Representative"
     },
     {
-      "fieldname": "wo_column_break_1",
-      "fieldtype": "Column Break"
-    },
-    {
       "fieldname": "wo_project_manager",
       "fieldtype": "Data",
       "label": "Project Manager"
+    },
+    {
+      "fieldname": "wo_people_column_break",
+      "fieldtype": "Column Break"
     },
     {
       "fieldname": "wo_timesheet_approver",
@@ -260,50 +362,46 @@
     {
       "fieldname": "wo_contract_section",
       "fieldtype": "Section Break",
-      "label": "Contract Details",
+      "label": "Work Order - Contract",
       "depends_on": "eval:doc.status=='Complete'"
     },
     {
-      "fieldname": "wo_contract_type",
-      "fieldtype": "Select",
-      "label": "Contract Type",
-      "options": "\nHardware\nSoftware\nService"
+      "fieldname": "wo_contract_start_date",
+      "fieldtype": "Date",
+      "label": "Contract Start Date",
+      "read_only": 1
     },
     {
-      "fieldname": "wo_revenue_type",
-      "fieldtype": "Select",
-      "label": "Revenue Type",
-      "options": "\nRevenue earned as labor incurred\nFixed fee"
-    },
-    {
-      "fieldname": "wo_fye",
-      "fieldtype": "Data",
-      "label": "FYE"
+      "fieldname": "wo_est_end_date",
+      "fieldtype": "Date",
+      "label": "Est. End Date",
+      "read_only": 1
     },
     {
       "fieldname": "wo_contract_column_break",
       "fieldtype": "Column Break"
     },
     {
-      "fieldname": "wo_cap_critical_rates",
+      "fieldname": "wo_contract_type",
       "fieldtype": "Data",
-      "label": "CAP/Critical Rates"
+      "label": "Contract Type"
     },
     {
-      "fieldname": "wo_est_end_date",
-      "fieldtype": "Date",
-      "label": "Est. End Date"
-    },
-    {
-      "fieldname": "wo_date_due_solution_delivery",
-      "fieldtype": "Date",
-      "label": "Date Due to Solution Delivery"
+      "fieldname": "wo_revenue_type",
+      "fieldtype": "Data",
+      "label": "Revenue Type"
     },
     {
       "fieldname": "wo_budget_section",
       "fieldtype": "Section Break",
-      "label": "Budget & Hours",
+      "label": "Work Order - Budget",
       "depends_on": "eval:doc.status=='Complete'"
+    },
+    {
+      "fieldname": "wo_total_contract_amount",
+      "fieldtype": "Currency",
+      "label": "Total Contract Amount",
+      "read_only": 1
     },
     {
       "fieldname": "wo_expenses_budget",
@@ -311,13 +409,20 @@
       "label": "Expenses Budget"
     },
     {
-      "fieldname": "wo_project_services_budget",
-      "fieldtype": "Currency",
-      "label": "Project Services Budget"
-    },
-    {
       "fieldname": "wo_budget_column_break",
       "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "wo_project_services_budget",
+      "fieldtype": "Currency",
+      "label": "Project Services Budget",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_hours_section",
+      "fieldtype": "Section Break",
+      "label": "Work Order - Hours",
+      "depends_on": "eval:doc.status=='Complete'"
     },
     {
       "fieldname": "wo_total_hours",
@@ -330,15 +435,60 @@
       "label": "Appraiser Hours"
     },
     {
+      "fieldname": "wo_hours_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
       "fieldname": "wo_solution_delivery_hours",
       "fieldtype": "Float",
       "label": "Solution Delivery Hours"
     },
     {
-      "fieldname": "wo_accounting_section",
+      "fieldname": "wo_accounting_info_section",
       "fieldtype": "Section Break",
-      "label": "Accounting Status",
+      "label": "Work Order - Accounting",
       "depends_on": "eval:doc.status=='Complete'"
+    },
+    {
+      "fieldname": "wo_fye",
+      "fieldtype": "Data",
+      "label": "FYE"
+    },
+    {
+      "fieldname": "wo_cap_critical_rates",
+      "fieldtype": "Data",
+      "label": "CAP/Critical Rates"
+    },
+    {
+      "fieldname": "wo_accounting_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "wo_date_due_solution_delivery",
+      "fieldtype": "Date",
+      "label": "Date Due to Solution Delivery"
+    },
+    {
+      "fieldname": "wo_timing_section",
+      "fieldtype": "Section Break",
+      "label": "Work Order - Timing",
+      "depends_on": "eval:doc.status=='Complete'"
+    },
+    {
+      "fieldname": "wo_start_date",
+      "fieldtype": "Date",
+      "label": "Start Date",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_delivery_date",
+      "fieldtype": "Date",
+      "label": "Delivery Date",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_timing_column_break",
+      "fieldtype": "Column Break"
     },
     {
       "fieldname": "wo_sent_to_accounting",

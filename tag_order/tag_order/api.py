@@ -28,5 +28,8 @@ def get_order_status(order_number):
         "required_date": str(doc.required_date) if doc.required_date else None,
         "number_of_rolls": doc.number_of_rolls,
         "ink_color": doc.ink_color,
-        "address_to_ship": doc.address_to_ship,
+        "address_street": doc.address_street,
+        "address_city": doc.address_city,
+        "address_state": doc.address_state,
+        "address_zip": doc.address_zip,
     }

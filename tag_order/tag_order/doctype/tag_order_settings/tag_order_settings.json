@@ -24,10 +24,16 @@
       "label": "Default Values"
     },
     {
+      "fieldname": "default_sales_rep",
+      "fieldtype": "Data",
+      "label": "Default Sales Representative",
+      "description": "Auto-populated on work orders"
+    },
+    {
       "fieldname": "default_project_manager",
       "fieldtype": "Data",
       "label": "Default Project Manager",
-      "description": "Auto-populated on work orders when status is Complete"
+      "description": "Auto-populated on work orders"
     },
     {
       "fieldname": "defaults_column_break",
@@ -37,7 +43,7 @@
       "fieldname": "default_timesheet_approver",
       "fieldtype": "Data",
       "label": "Default Timesheet Approver",
-      "description": "Auto-populated on work orders when status is Complete"
+      "description": "Auto-populated on work orders"
     }
   ],
   "permissions": [

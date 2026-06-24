@@ -64,9 +64,31 @@
       "label": "Shipping"
     },
     {
-      "fieldname": "address_to_ship",
-      "fieldtype": "Small Text",
-      "label": "Address To Ship",
+      "fieldname": "address_street",
+      "fieldtype": "Data",
+      "label": "Street Address",
+      "reqd": 1
+    },
+    {
+      "fieldname": "",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "address_city",
+      "fieldtype": "Data",
+      "label": "City",
+      "reqd": 1
+    },
+    {
+      "fieldname": "address_state",
+      "fieldtype": "Data",
+      "label": "State",
+      "reqd": 1
+    },
+    {
+      "fieldname": "address_zip",
+      "fieldtype": "Data",
+      "label": "Zip Code",
       "reqd": 1
     },
     {

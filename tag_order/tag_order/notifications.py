@@ -37,11 +37,47 @@ def on_status_change(doc, method):
 
 def _populate_work_order_defaults(doc):
     """Pre-fill work order fields from order data and settings."""
+    today = frappe.utils.today()
+
+    # Auto-fill from order data
     if not doc.wo_project_name:
         doc.wo_project_name = doc.client_name
+    if not doc.wo_client_name:
+        doc.wo_client_name = doc.client_name
+    if not doc.wo_contact_name:
+        doc.wo_contact_name = doc.contact_name
+    if not doc.wo_phone:
+        doc.wo_phone = doc.phone
+    if not doc.wo_email:
+        doc.wo_email = doc.email
+    if not doc.wo_address:
+        doc.wo_address = doc.address_street
+    if not doc.wo_city:
+        doc.wo_city = doc.address_city
+    if not doc.wo_state:
+        doc.wo_state = doc.address_state
+    if not doc.wo_zip:
+        doc.wo_zip = doc.address_zip
+    if not doc.wo_po_number:
+        doc.wo_po_number = doc.po_number
+    if not doc.wo_tag_number:
+        doc.wo_tag_number = doc.starting_number
 
+    # Pricing
+    if not doc.wo_total_contract_amount:
+        doc.wo_total_contract_amount = doc.total_price
     if not doc.wo_project_services_budget:
         doc.wo_project_services_budget = doc.total_price
+
+    # Dates — set to when Complete was clicked
+    if not doc.wo_contract_start_date:
+        doc.wo_contract_start_date = today
+    if not doc.wo_est_end_date:
+        doc.wo_est_end_date = today
+    if not doc.wo_start_date:
+        doc.wo_start_date = today
+    if not doc.wo_delivery_date:
+        doc.wo_delivery_date = today
 
     # Fetch defaults from settings
     try:
@@ -50,8 +86,18 @@ def _populate_work_order_defaults(doc):
             doc.wo_project_manager = settings.default_project_manager
         if settings.default_timesheet_approver and not doc.wo_timesheet_approver:
             doc.wo_timesheet_approver = settings.default_timesheet_approver
+        if hasattr(settings, 'default_sales_rep') and settings.default_sales_rep and not doc.wo_sales_rep:
+            doc.wo_sales_rep = settings.default_sales_rep
     except Exception:
-        pass  # Settings may not exist yet
+        pass
+
+    # Static defaults
+    if not doc.wo_contract_type:
+        doc.wo_contract_type = "Hardware"
+    if not doc.wo_revenue_type:
+        doc.wo_revenue_type = "Revenue earned as labor incurred"
+    if not doc.wo_total_hours:
+        doc.wo_total_hours = 1
 
 
 def _already_notified(doc, status):
