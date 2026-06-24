@@ -1,0 +1,51 @@
+{
+  "name": "Tag Order Settings",
+  "module": "Tag Order",
+  "doctype": "DocType",
+  "document_type": "Setup",
+  "engine": "InnoDB",
+  "issingle": 1,
+  "fields": [
+    {
+      "fieldname": "email_section",
+      "fieldtype": "Section Break",
+      "label": "Email Configuration"
+    },
+    {
+      "fieldname": "accounting_email",
+      "fieldtype": "Data",
+      "label": "Accounting Email Address",
+      "options": "Email",
+      "description": "Work orders will be sent to this email address"
+    },
+    {
+      "fieldname": "defaults_section",
+      "fieldtype": "Section Break",
+      "label": "Default Values"
+    },
+    {
+      "fieldname": "default_project_manager",
+      "fieldtype": "Data",
+      "label": "Default Project Manager",
+      "description": "Auto-populated on work orders when status is Complete"
+    },
+    {
+      "fieldname": "defaults_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "default_timesheet_approver",
+      "fieldtype": "Data",
+      "label": "Default Timesheet Approver",
+      "description": "Auto-populated on work orders when status is Complete"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    }
+  ]
+}

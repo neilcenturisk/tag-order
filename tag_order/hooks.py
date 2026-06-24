@@ -45,11 +45,10 @@ fixtures = [
 
 # Document Events
 # ---------------
-# Hook on document methods and events
-
 doc_events = {
     "Tag Order": {
-        "validate": "tag_order.tag_order.doctype.tag_order.tag_order.validate_order"
+        "validate": "tag_order.tag_order.doctype.tag_order.tag_order.validate_order",
+        "on_update": "tag_order.tag_order.notifications.on_status_change"
     }
 }
 
@@ -68,3 +67,7 @@ doc_events = {
 
 # override_whitelisted_methods = {
 # }
+
+# Website
+# -------
+# www pages are auto-discovered from the www/ directory

@@ -1,0 +1,14 @@
+{% extends "tag_order/tag_order/templates/notification_base.html" %}
+
+{% block content %}
+<p>Great news — your tag order <strong>{{ order_number }}</strong> is now being printed.</p>
+
+{% if number_of_rolls or ink_color %}
+<div style="background: #F3F4F6; padding: 12px 16px; border-radius: 6px; margin: 15px 0;">
+  {% if number_of_rolls %}<p style="margin: 4px 0;"><strong>Rolls:</strong> {{ number_of_rolls }}</p>{% endif %}
+  {% if ink_color %}<p style="margin: 4px 0;"><strong>Ink Color:</strong> {{ ink_color }}</p>{% endif %}
+</div>
+{% endif %}
+
+<p>We'll let you know as soon as your order ships.</p>
+{% endblock %}

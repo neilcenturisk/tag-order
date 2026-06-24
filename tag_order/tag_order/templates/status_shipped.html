@@ -1,0 +1,14 @@
+{% extends "tag_order/tag_order/templates/notification_base.html" %}
+
+{% block content %}
+<p>Your tag order <strong>{{ order_number }}</strong> has shipped!</p>
+
+{% if address_to_ship %}
+<div style="background: #F3F4F6; padding: 12px 16px; border-radius: 6px; margin: 15px 0;">
+  <p style="margin: 4px 0;"><strong>Shipping to:</strong></p>
+  <p style="margin: 4px 0;">{{ address_to_ship }}</p>
+</div>
+{% endif %}
+
+<p>You should receive your tags soon. We'll send a final confirmation once delivery is complete.</p>
+{% endblock %}

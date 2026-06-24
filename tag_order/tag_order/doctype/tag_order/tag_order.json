@@ -151,6 +151,12 @@
       "description": "$175 per roll"
     },
     {
+      "fieldname": "shipped_date",
+      "fieldtype": "Date",
+      "label": "Shipped Date",
+      "read_only": 1
+    },
+    {
       "fieldname": "optional_section",
       "fieldtype": "Section Break",
       "label": "Optional Information"
@@ -209,6 +215,143 @@
       "fieldname": "notes",
       "fieldtype": "Small Text",
       "label": "Notes"
+    },
+    {
+      "fieldname": "notification_log",
+      "fieldtype": "Small Text",
+      "label": "Notification Log",
+      "hidden": 1
+    },
+    {
+      "fieldname": "work_order_section",
+      "fieldtype": "Section Break",
+      "label": "Work Order",
+      "depends_on": "eval:doc.status=='Complete'",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "wo_project_id",
+      "fieldtype": "Data",
+      "label": "Project ID"
+    },
+    {
+      "fieldname": "wo_project_name",
+      "fieldtype": "Data",
+      "label": "Project Name"
+    },
+    {
+      "fieldname": "wo_sales_rep",
+      "fieldtype": "Data",
+      "label": "Sales Representative"
+    },
+    {
+      "fieldname": "wo_column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "wo_project_manager",
+      "fieldtype": "Data",
+      "label": "Project Manager"
+    },
+    {
+      "fieldname": "wo_timesheet_approver",
+      "fieldtype": "Data",
+      "label": "Timesheet Approver"
+    },
+    {
+      "fieldname": "wo_contract_section",
+      "fieldtype": "Section Break",
+      "label": "Contract Details",
+      "depends_on": "eval:doc.status=='Complete'"
+    },
+    {
+      "fieldname": "wo_contract_type",
+      "fieldtype": "Select",
+      "label": "Contract Type",
+      "options": "\nHardware\nSoftware\nService"
+    },
+    {
+      "fieldname": "wo_revenue_type",
+      "fieldtype": "Select",
+      "label": "Revenue Type",
+      "options": "\nRevenue earned as labor incurred\nFixed fee"
+    },
+    {
+      "fieldname": "wo_fye",
+      "fieldtype": "Data",
+      "label": "FYE"
+    },
+    {
+      "fieldname": "wo_contract_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "wo_cap_critical_rates",
+      "fieldtype": "Data",
+      "label": "CAP/Critical Rates"
+    },
+    {
+      "fieldname": "wo_est_end_date",
+      "fieldtype": "Date",
+      "label": "Est. End Date"
+    },
+    {
+      "fieldname": "wo_date_due_solution_delivery",
+      "fieldtype": "Date",
+      "label": "Date Due to Solution Delivery"
+    },
+    {
+      "fieldname": "wo_budget_section",
+      "fieldtype": "Section Break",
+      "label": "Budget & Hours",
+      "depends_on": "eval:doc.status=='Complete'"
+    },
+    {
+      "fieldname": "wo_expenses_budget",
+      "fieldtype": "Currency",
+      "label": "Expenses Budget"
+    },
+    {
+      "fieldname": "wo_project_services_budget",
+      "fieldtype": "Currency",
+      "label": "Project Services Budget"
+    },
+    {
+      "fieldname": "wo_budget_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "wo_total_hours",
+      "fieldtype": "Float",
+      "label": "Total Project Hours"
+    },
+    {
+      "fieldname": "wo_appraiser_hours",
+      "fieldtype": "Float",
+      "label": "Appraiser Hours"
+    },
+    {
+      "fieldname": "wo_solution_delivery_hours",
+      "fieldtype": "Float",
+      "label": "Solution Delivery Hours"
+    },
+    {
+      "fieldname": "wo_accounting_section",
+      "fieldtype": "Section Break",
+      "label": "Accounting Status",
+      "depends_on": "eval:doc.status=='Complete'"
+    },
+    {
+      "fieldname": "wo_sent_to_accounting",
+      "fieldtype": "Check",
+      "label": "Sent to Accounting",
+      "read_only": 1
+    },
+    {
+      "fieldname": "wo_sent_date",
+      "fieldtype": "Datetime",
+      "label": "Sent Date",
+      "read_only": 1
     }
   ],
   "permissions": [
