@@ -125,8 +125,7 @@
       "fieldname": "line_2",
       "fieldtype": "Data",
       "label": "LINE 2",
-      "reqd": 1,
-      "description": "Second line printed on the tag"
+      "description": "Second line printed on the tag (optional)"
     },
     {
       "fieldname": "",

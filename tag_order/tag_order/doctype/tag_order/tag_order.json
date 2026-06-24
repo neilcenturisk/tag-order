@@ -118,8 +118,7 @@
     {
       "fieldname": "line_2",
       "fieldtype": "Data",
-      "label": "LINE 2",
-      "reqd": 1
+      "label": "LINE 2"
     },
     {
       "fieldname": "dates_section",
