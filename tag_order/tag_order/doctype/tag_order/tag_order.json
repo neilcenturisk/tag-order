@@ -244,6 +244,12 @@
       "hidden": 1
     },
     {
+      "fieldname": "accounting_token",
+      "fieldtype": "Data",
+      "label": "Accounting Token",
+      "hidden": 1
+    },
+    {
       "fieldname": "work_order_section",
       "fieldtype": "Section Break",
       "label": "Work Order",

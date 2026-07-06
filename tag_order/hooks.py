@@ -9,11 +9,11 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/tag_order/css/tag_order.css"
+app_include_css = "/assets/tag_order/css/tag_order.css"
 # app_include_js = "/assets/tag_order/js/tag_order.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/tag_order/css/tag_order.css"
+web_include_css = "/assets/tag_order/css/tag_order.css"
 # web_include_js = "/assets/tag_order/js/tag_order.js"
 
 # Installation

@@ -34,6 +34,8 @@ def validate_order(doc, method):
 @frappe.whitelist()
 def send_work_order_to_accounting(order_name):
     """Send the work order details to the configured accounting email."""
+    import secrets
+
     # Get settings
     try:
         settings = frappe.get_single("Tag Order Settings")
@@ -48,9 +50,19 @@ def send_work_order_to_accounting(order_name):
     if doc.wo_sent_to_accounting:
         return {"error": "Work order has already been sent to accounting."}
 
+    # Generate a unique token for the accounting portal link
+    if not doc.accounting_token:
+        token = secrets.token_urlsafe(32)
+        doc.db_set("accounting_token", token)
+    else:
+        token = doc.accounting_token
+
+    # Build the accounting portal link
+    portal_link = f"https://helpdesk.centurisk.com/work-order?token={token}"
+
     # Build the work order email content
     subject = f"Work Order - {doc.name} - {doc.client_name}"
-    message = _build_work_order_email(doc)
+    message = _build_work_order_email(doc, portal_link)
 
     try:
         frappe.sendmail(
@@ -75,35 +87,29 @@ def send_work_order_to_accounting(order_name):
         return {"error": f"Failed to send email: {str(e)}"}
 
 
-def _build_work_order_email(doc):
+def _build_work_order_email(doc, portal_link):
     """Build HTML email body for the work order."""
     rows = [
         ("Project ID", doc.wo_project_id),
         ("Project Name", doc.wo_project_name),
-        ("Client Name", doc.client_name),
-        ("Contact Name", doc.contact_name),
-        ("Phone", doc.phone),
-        ("Email", doc.email),
-        ("Address", doc.address_to_ship),
-        ("PO#", doc.po_number),
-        ("Tag #", doc.starting_number),
+        ("Client Name", doc.wo_client_name or doc.client_name),
+        ("Contact Name", doc.wo_contact_name or doc.contact_name),
+        ("Phone", doc.wo_phone or doc.phone),
+        ("Email", doc.wo_email or doc.email),
+        ("Address", doc.wo_address or doc.address_street),
+        ("City/State/Zip", f"{doc.wo_city or doc.address_city}, {doc.wo_state or doc.address_state} {doc.wo_zip or doc.address_zip}"),
+        ("PO#", doc.wo_po_number or doc.po_number),
+        ("Tag #", doc.wo_tag_number or doc.starting_number),
         ("Sales Representative", doc.wo_sales_rep),
         ("Project Manager", doc.wo_project_manager),
         ("Timesheet Approver", doc.wo_timesheet_approver),
         ("Contract Type", doc.wo_contract_type),
         ("Revenue Type", doc.wo_revenue_type),
-        ("FYE", doc.wo_fye),
-        ("CAP/Critical Rates", doc.wo_cap_critical_rates),
-        ("Total Contract Amount", f"${doc.total_price:,.2f}" if doc.total_price else ""),
-        ("Expenses Budget", f"${doc.wo_expenses_budget:,.2f}" if doc.wo_expenses_budget else ""),
+        ("Total Contract Amount", f"${doc.wo_total_contract_amount:,.2f}" if doc.wo_total_contract_amount else f"${doc.total_price:,.2f}" if doc.total_price else ""),
         ("Project Services Budget", f"${doc.wo_project_services_budget:,.2f}" if doc.wo_project_services_budget else ""),
         ("Total Project Hours", doc.wo_total_hours),
-        ("Appraiser Hours", doc.wo_appraiser_hours),
-        ("Solution Delivery Hours", doc.wo_solution_delivery_hours),
-        ("Start Date", doc.order_date),
-        ("Est. End Date", doc.wo_est_end_date),
-        ("Delivery Date", doc.shipped_date),
-        ("Date Due to Solution Delivery", doc.wo_date_due_solution_delivery),
+        ("Start Date", doc.wo_start_date),
+        ("Delivery Date", doc.wo_delivery_date),
     ]
 
     table_rows = ""
@@ -115,11 +121,17 @@ def _build_work_order_email(doc):
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 700px; margin: 0 auto;">
         <h2 style="color: #1F2937;">Work Order - {doc.name}</h2>
         <p style="color: #6B7280;">Client: {doc.client_name}</p>
+
+        <div style="margin: 24px 0;">
+            <a href="{portal_link}" style="background: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: 500;">View & Edit Work Order</a>
+        </div>
+
         <table style="width: 100%; border-collapse: collapse; border: 1px solid #E5E7EB; border-radius: 6px; margin-top: 20px;">
             {table_rows}
         </table>
+
         <p style="color: #6B7280; margin-top: 20px; font-size: 13px;">
-            This work order was generated from Tag Order {doc.name} in the Centurisk Helpdesk system.
+            Click the button above to view, edit, and save/print this work order. Changes made there will be saved automatically.
         </p>
     </div>
     """
