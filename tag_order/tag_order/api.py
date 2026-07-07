@@ -3,15 +3,10 @@ import frappe
 
 @frappe.whitelist(allow_guest=True)
 def get_order_status(order_number):
-    """Return public order details for the tracking portal.
-
-    Only exposes customer-safe fields. Internal fields (assigned_to, notes,
-    total_price, notification_log, wo_* fields) are excluded.
-    """
+    """Return public order details for the tracking portal."""
     if not order_number:
         return {"error": "Please provide an order number"}
 
-    # Normalize to uppercase
     order_number = order_number.strip().upper()
 
     if not frappe.db.exists("Tag Order", order_number):
@@ -46,9 +41,8 @@ def save_work_order(token, fields):
     if isinstance(fields, str):
         fields = json.loads(fields)
 
-    # Find order by token
     orders = frappe.get_all(
-        "Tag Order",
+        "Tag Work Order",
         filters={"accounting_token": token},
         fields=["name"],
         limit=1,
@@ -57,19 +51,18 @@ def save_work_order(token, fields):
     if not orders:
         return {"error": "Invalid token"}
 
-    doc = frappe.get_doc("Tag Order", orders[0].name)
+    doc = frappe.get_doc("Tag Work Order", orders[0].name)
 
-    # Update only work order fields
     allowed_fields = [
-        "wo_project_id", "wo_project_name", "wo_client_name", "wo_contact_name",
-        "wo_address", "wo_city", "wo_state", "wo_zip", "wo_phone", "wo_email",
-        "wo_po_number", "wo_tag_number", "wo_sales_rep", "wo_project_manager",
-        "wo_timesheet_approver", "wo_contract_start_date", "wo_est_end_date",
-        "wo_contract_type", "wo_revenue_type", "wo_total_contract_amount",
-        "wo_expenses_budget", "wo_project_services_budget", "wo_total_hours",
-        "wo_appraiser_hours", "wo_solution_delivery_hours", "wo_fye",
-        "wo_cap_critical_rates", "wo_date_due_solution_delivery",
-        "wo_start_date", "wo_delivery_date",
+        "project_id", "project_name", "client_name", "contact_name",
+        "address", "city", "state", "zip_code", "phone", "email",
+        "po_number", "tag_number", "sales_rep", "project_manager",
+        "timesheet_approver", "contract_start_date", "est_end_date",
+        "contract_type", "revenue_type", "total_contract_amount",
+        "expenses_budget", "project_services_budget", "total_project_hours",
+        "appraiser_hours", "solution_delivery_hours", "fye",
+        "cap_critical_rates", "date_due_solution_delivery",
+        "start_date", "delivery_date",
     ]
 
     for field, value in fields.items():
@@ -86,7 +79,7 @@ def download_work_order_pdf(token):
         frappe.throw("No token provided")
 
     orders = frappe.get_all(
-        "Tag Order",
+        "Tag Work Order",
         filters={"accounting_token": token},
         fields=["name"],
         limit=1,
@@ -95,7 +88,7 @@ def download_work_order_pdf(token):
     if not orders:
         frappe.throw("Invalid token")
 
-    doc = frappe.get_doc("Tag Order", orders[0].name)
+    doc = frappe.get_doc("Tag Work Order", orders[0].name)
 
     html = _render_work_order_pdf_html(doc)
 
@@ -110,36 +103,36 @@ def download_work_order_pdf(token):
 def _render_work_order_pdf_html(doc):
     """Render clean HTML for PDF generation."""
     rows = [
-        ("Project ID", doc.wo_project_id),
-        ("Project Name", doc.wo_project_name or doc.client_name),
-        ("Client Name", doc.wo_client_name or doc.client_name),
-        ("Contact Name", doc.wo_contact_name or doc.contact_name),
-        ("Phone", doc.wo_phone or doc.phone),
-        ("E-Mail", doc.wo_email or doc.email),
-        ("Address", doc.wo_address or doc.address_street),
-        ("City", doc.wo_city or doc.address_city),
-        ("State", doc.wo_state or doc.address_state),
-        ("Zip", doc.wo_zip or doc.address_zip),
-        ("PO#", doc.wo_po_number or doc.po_number),
-        ("Tag #", doc.wo_tag_number or doc.starting_number),
-        ("Sales Representative", doc.wo_sales_rep),
-        ("Project Manager", doc.wo_project_manager),
-        ("Timesheet Approver", doc.wo_timesheet_approver),
-        ("Contract Start Date", doc.wo_contract_start_date),
-        ("Est. End Date", doc.wo_est_end_date),
-        ("Contract Type", doc.wo_contract_type),
-        ("Revenue Type", doc.wo_revenue_type),
-        ("Total Contract Amount", f"${doc.wo_total_contract_amount:,.2f}" if doc.wo_total_contract_amount else f"${doc.total_price:,.2f}" if doc.total_price else ""),
-        ("Expenses Budget", f"${doc.wo_expenses_budget:,.2f}" if doc.wo_expenses_budget else "—"),
-        ("Project Services Budget", f"${doc.wo_project_services_budget:,.2f}" if doc.wo_project_services_budget else ""),
-        ("Total Project Hours", doc.wo_total_hours),
-        ("Appraiser Hours", doc.wo_appraiser_hours),
-        ("Solution Delivery Hours", doc.wo_solution_delivery_hours),
-        ("FYE", doc.wo_fye),
-        ("CAP/Critical Rates", doc.wo_cap_critical_rates),
-        ("Start Date", doc.wo_start_date),
-        ("Delivery Date", doc.wo_delivery_date),
-        ("Date Due to Solution Delivery", doc.wo_date_due_solution_delivery),
+        ("Project ID", doc.project_id),
+        ("Project Name", doc.project_name),
+        ("Client Name", doc.client_name),
+        ("Contact Name", doc.contact_name),
+        ("Phone", doc.phone),
+        ("E-Mail", doc.email),
+        ("Address", doc.address),
+        ("City", doc.city),
+        ("State", doc.state),
+        ("Zip", doc.zip_code),
+        ("PO#", doc.po_number),
+        ("Tag #", doc.tag_number),
+        ("Sales Representative", doc.sales_rep),
+        ("Project Manager", doc.project_manager),
+        ("Timesheet Approver", doc.timesheet_approver),
+        ("Contract Start Date", doc.contract_start_date),
+        ("Est. End Date", doc.est_end_date),
+        ("Contract Type", doc.contract_type),
+        ("Revenue Type", doc.revenue_type),
+        ("Total Contract Amount", f"${doc.total_contract_amount:,.2f}" if doc.total_contract_amount else "—"),
+        ("Expenses Budget", f"${doc.expenses_budget:,.2f}" if doc.expenses_budget else "—"),
+        ("Project Services Budget", f"${doc.project_services_budget:,.2f}" if doc.project_services_budget else "—"),
+        ("Total Project Hours", doc.total_project_hours),
+        ("Appraiser Hours", doc.appraiser_hours),
+        ("Solution Delivery Hours", doc.solution_delivery_hours),
+        ("FYE", doc.fye),
+        ("CAP/Critical Rates", doc.cap_critical_rates),
+        ("Start Date", doc.start_date),
+        ("Delivery Date", doc.delivery_date),
+        ("Date Due to Solution Delivery", doc.date_due_solution_delivery),
     ]
 
     table_rows = ""

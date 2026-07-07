@@ -21,11 +21,11 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Project ID</label>
-        <input type="text" id="wo_project_id" value="{{ order.wo_project_id or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="text" id="project_id" value="{{ order.project_id or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Project Name</label>
-        <input type="text" id="wo_project_name" value="{{ order.wo_project_name or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="text" id="project_name" value="{{ order.project_name or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
     </div>
 
@@ -35,43 +35,43 @@
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
         <div>
           <label style="font-size: 11px; color: #6B7280;">Client Name</label>
-          <input type="text" id="wo_client_name" value="{{ order.wo_client_name or order.client_name or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="text" id="client_name" value="{{ order.client_name or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">Contact Name</label>
-          <input type="text" id="wo_contact_name" value="{{ order.wo_contact_name or order.contact_name or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="text" id="contact_name" value="{{ order.contact_name or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">Address</label>
-          <input type="text" id="wo_address" value="{{ order.wo_address or order.address_street or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="text" id="address" value="{{ order.address or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">City</label>
-          <input type="text" id="wo_city" value="{{ order.wo_city or order.address_city or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="text" id="city" value="{{ order.city or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">State</label>
-          <input type="text" id="wo_state" value="{{ order.wo_state or order.address_state or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="text" id="state" value="{{ order.state or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">Zip</label>
-          <input type="text" id="wo_zip" value="{{ order.wo_zip or order.address_zip or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="text" id="zip_code" value="{{ order.zip_code or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">Phone</label>
-          <input type="text" id="wo_phone" value="{{ order.wo_phone or order.phone or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="text" id="phone" value="{{ order.phone or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">E-Mail</label>
-          <input type="text" id="wo_email" value="{{ order.wo_email or order.email or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="text" id="email" value="{{ order.email or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">PO#</label>
-          <input type="text" id="wo_po_number" value="{{ order.wo_po_number or order.po_number or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="text" id="po_number" value="{{ order.po_number or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">Tag #</label>
-          <input type="text" id="wo_tag_number" value="{{ order.wo_tag_number or order.starting_number or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="text" id="tag_number" value="{{ order.tag_number or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
       </div>
     </div>
@@ -80,15 +80,15 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Sales Representative</label>
-        <input type="text" id="wo_sales_rep" value="{{ order.wo_sales_rep or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="text" id="sales_rep" value="{{ order.sales_rep or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Project Manager</label>
-        <input type="text" id="wo_project_manager" value="{{ order.wo_project_manager or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="text" id="project_manager" value="{{ order.project_manager or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Timesheet Approver</label>
-        <input type="text" id="wo_timesheet_approver" value="{{ order.wo_timesheet_approver or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="text" id="timesheet_approver" value="{{ order.timesheet_approver or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
     </div>
 
@@ -96,19 +96,19 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Contract Start Date</label>
-        <input type="date" id="wo_contract_start_date" value="{{ order.wo_contract_start_date or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="date" id="contract_start_date" value="{{ order.contract_start_date or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Est. End Date</label>
-        <input type="date" id="wo_est_end_date" value="{{ order.wo_est_end_date or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="date" id="est_end_date" value="{{ order.est_end_date or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Contract Type</label>
-        <input type="text" id="wo_contract_type" value="{{ order.wo_contract_type or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="text" id="contract_type" value="{{ order.contract_type or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Revenue Type</label>
-        <input type="text" id="wo_revenue_type" value="{{ order.wo_revenue_type or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="text" id="revenue_type" value="{{ order.revenue_type or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
     </div>
 
@@ -118,15 +118,15 @@
       <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
         <div>
           <label style="font-size: 11px; color: #6B7280;">Total Contract Amount</label>
-          <input type="number" step="0.01" id="wo_total_contract_amount" value="{{ order.wo_total_contract_amount or order.total_price or 0 }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="number" step="0.01" id="total_contract_amount" value="{{ order.total_contract_amount or 0 }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">Expenses Budget</label>
-          <input type="number" step="0.01" id="wo_expenses_budget" value="{{ order.wo_expenses_budget or 0 }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="number" step="0.01" id="expenses_budget" value="{{ order.expenses_budget or 0 }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
         <div>
           <label style="font-size: 11px; color: #6B7280;">Project Services Budget</label>
-          <input type="number" step="0.01" id="wo_project_services_budget" value="{{ order.wo_project_services_budget or order.total_price or 0 }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
+          <input type="number" step="0.01" id="project_services_budget" value="{{ order.project_services_budget or 0 }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 2px;">
         </div>
       </div>
     </div>
@@ -135,15 +135,15 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Total Project Hours</label>
-        <input type="number" step="0.5" id="wo_total_hours" value="{{ order.wo_total_hours or 1 }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="number" step="0.5" id="total_project_hours" value="{{ order.total_project_hours or 0 }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Appraiser Hours</label>
-        <input type="number" step="0.5" id="wo_appraiser_hours" value="{{ order.wo_appraiser_hours or 0 }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="number" step="0.5" id="appraiser_hours" value="{{ order.appraiser_hours or 0 }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Solution Delivery Hours</label>
-        <input type="number" step="0.5" id="wo_solution_delivery_hours" value="{{ order.wo_solution_delivery_hours or 0 }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="number" step="0.5" id="solution_delivery_hours" value="{{ order.solution_delivery_hours or 0 }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
     </div>
 
@@ -151,15 +151,15 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">FYE</label>
-        <input type="text" id="wo_fye" value="{{ order.wo_fye or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="text" id="fye" value="{{ order.fye or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">CAP/Critical Rates</label>
-        <input type="text" id="wo_cap_critical_rates" value="{{ order.wo_cap_critical_rates or '' }}" style="width: 100%; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="text" id="cap_critical_rates" value="{{ order.cap_critical_rates or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Date Due to Solution Delivery</label>
-        <input type="date" id="wo_date_due_solution_delivery" value="{{ order.wo_date_due_solution_delivery or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="date" id="date_due_solution_delivery" value="{{ order.date_due_solution_delivery or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
     </div>
 
@@ -167,11 +167,11 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 30px;">
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Start Date</label>
-        <input type="date" id="wo_start_date" value="{{ order.wo_start_date or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="date" id="start_date" value="{{ order.start_date or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
       <div>
         <label style="font-size: 12px; color: #6B7280; text-transform: uppercase; font-weight: 600;">Delivery Date</label>
-        <input type="date" id="wo_delivery_date" value="{{ order.wo_delivery_date or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
+        <input type="date" id="delivery_date" value="{{ order.delivery_date or '' }}" style="width: 100%; padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 4px; margin-top: 4px;">
       </div>
     </div>
   </div>
@@ -191,15 +191,15 @@
   <script>
     function saveWorkOrder() {
       const fields = [
-        'wo_project_id', 'wo_project_name', 'wo_client_name', 'wo_contact_name',
-        'wo_address', 'wo_city', 'wo_state', 'wo_zip', 'wo_phone', 'wo_email',
-        'wo_po_number', 'wo_tag_number', 'wo_sales_rep', 'wo_project_manager',
-        'wo_timesheet_approver', 'wo_contract_start_date', 'wo_est_end_date',
-        'wo_contract_type', 'wo_revenue_type', 'wo_total_contract_amount',
-        'wo_expenses_budget', 'wo_project_services_budget', 'wo_total_hours',
-        'wo_appraiser_hours', 'wo_solution_delivery_hours', 'wo_fye',
-        'wo_cap_critical_rates', 'wo_date_due_solution_delivery',
-        'wo_start_date', 'wo_delivery_date'
+        'project_id', 'project_name', 'client_name', 'contact_name',
+        'address', 'city', 'state', 'zip_code', 'phone', 'email',
+        'po_number', 'tag_number', 'sales_rep', 'project_manager',
+        'timesheet_approver', 'contract_start_date', 'est_end_date',
+        'contract_type', 'revenue_type', 'total_contract_amount',
+        'expenses_budget', 'project_services_budget', 'total_project_hours',
+        'appraiser_hours', 'solution_delivery_hours', 'fye',
+        'cap_critical_rates', 'date_due_solution_delivery',
+        'start_date', 'delivery_date'
       ];
 
       const data = {};
@@ -233,13 +233,6 @@
       window.location.href = '/api/method/tag_order.tag_order.api.download_work_order_pdf?token={{ token }}';
     }
   </script>
-
-  <style>
-    @media print {
-      #action-buttons, #save-status { display: none !important; }
-      input { border: none !important; padding: 4px 0 !important; }
-    }
-  </style>
 
   {% endif %}
 </div>

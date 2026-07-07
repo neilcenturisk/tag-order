@@ -20,10 +20,6 @@ def on_status_change(doc, method):
     if new_status == "Shipped" and not doc.shipped_date:
         doc.shipped_date = frappe.utils.today()
 
-    # Auto-populate work order fields when transitioning to Complete
-    if new_status == "Complete":
-        _populate_work_order_defaults(doc)
-
     # Enqueue notification email (async)
     if doc.email and not _already_notified(doc, new_status):
         frappe.enqueue(
@@ -33,71 +29,6 @@ def on_status_change(doc, method):
             new_status=new_status,
             now=frappe.flags.in_test,
         )
-
-
-def _populate_work_order_defaults(doc):
-    """Pre-fill work order fields from order data and settings."""
-    today = frappe.utils.today()
-
-    # Auto-fill from order data
-    if not doc.wo_project_name:
-        doc.wo_project_name = doc.client_name
-    if not doc.wo_client_name:
-        doc.wo_client_name = doc.client_name
-    if not doc.wo_contact_name:
-        doc.wo_contact_name = doc.contact_name
-    if not doc.wo_phone:
-        doc.wo_phone = doc.phone
-    if not doc.wo_email:
-        doc.wo_email = doc.email
-    if not doc.wo_address:
-        doc.wo_address = doc.address_street
-    if not doc.wo_city:
-        doc.wo_city = doc.address_city
-    if not doc.wo_state:
-        doc.wo_state = doc.address_state
-    if not doc.wo_zip:
-        doc.wo_zip = doc.address_zip
-    if not doc.wo_po_number:
-        doc.wo_po_number = doc.po_number
-    if not doc.wo_tag_number:
-        doc.wo_tag_number = doc.starting_number
-
-    # Pricing
-    if not doc.wo_total_contract_amount:
-        doc.wo_total_contract_amount = doc.total_price
-    if not doc.wo_project_services_budget:
-        doc.wo_project_services_budget = doc.total_price
-
-    # Dates — set to when Complete was clicked
-    if not doc.wo_contract_start_date:
-        doc.wo_contract_start_date = today
-    if not doc.wo_est_end_date:
-        doc.wo_est_end_date = today
-    if not doc.wo_start_date:
-        doc.wo_start_date = today
-    if not doc.wo_delivery_date:
-        doc.wo_delivery_date = today
-
-    # Fetch defaults from settings
-    try:
-        settings = frappe.get_single("Tag Order Settings")
-        if settings.default_project_manager and not doc.wo_project_manager:
-            doc.wo_project_manager = settings.default_project_manager
-        if settings.default_timesheet_approver and not doc.wo_timesheet_approver:
-            doc.wo_timesheet_approver = settings.default_timesheet_approver
-        if hasattr(settings, 'default_sales_rep') and settings.default_sales_rep and not doc.wo_sales_rep:
-            doc.wo_sales_rep = settings.default_sales_rep
-    except Exception:
-        pass
-
-    # Static defaults
-    if not doc.wo_contract_type:
-        doc.wo_contract_type = "Hardware"
-    if not doc.wo_revenue_type:
-        doc.wo_revenue_type = "Revenue earned as labor incurred"
-    if not doc.wo_total_hours:
-        doc.wo_total_hours = 1
 
 
 def _already_notified(doc, status):
@@ -139,7 +70,6 @@ def send_status_notification(order_name, new_status):
             )
             return
 
-        # Build email content
         subject = f"Tag Order {doc.name} - {new_status}"
         tracking_link = f"https://helpdesk.centurisk.com/tag-order-tracking?order={doc.name}"
         contact = doc.contact_name or doc.client_name
@@ -156,7 +86,10 @@ def send_status_notification(order_name, new_status):
             "tracking_link": tracking_link,
             "number_of_rolls": doc.number_of_rolls,
             "ink_color": doc.ink_color,
-            "address_to_ship": doc.address_to_ship,
+            "address_street": doc.address_street,
+            "address_city": doc.address_city,
+            "address_state": doc.address_state,
+            "address_zip": doc.address_zip,
             "required_date": doc.required_date,
             "order_date": doc.order_date,
         }
@@ -164,7 +97,6 @@ def send_status_notification(order_name, new_status):
         try:
             message = frappe.render_template(template_path, context)
         except Exception:
-            # Fallback to a simple text email if template not found
             message = _build_fallback_email(doc, new_status, tracking_link, contact)
 
         frappe.sendmail(
@@ -175,13 +107,12 @@ def send_status_notification(order_name, new_status):
             reference_name=doc.name,
         )
 
-        # Log successful send
         _update_notification_log(doc, new_status, doc.email)
 
     except Exception as e:
         frappe.log_error(
             title=f"Tag Order Notification Failed: {order_name}",
-            message=f"Status: {new_status}\nRecipient: {order_name}\nError: {str(e)}",
+            message=f"Status: {new_status}\nError: {str(e)}",
         )
 
 
@@ -195,8 +126,8 @@ def _build_fallback_email(doc, status, tracking_link, contact):
     if status == "Printing" and doc.number_of_rolls:
         lines.append(f"<p>Details: {doc.number_of_rolls} roll(s), {doc.ink_color or 'N/A'} ink</p>")
 
-    if status == "Shipped" and doc.address_to_ship:
-        lines.append(f"<p>Shipping to: {doc.address_to_ship}</p>")
+    if status == "Shipped" and doc.address_street:
+        lines.append(f"<p>Shipping to: {doc.address_street}, {doc.address_city}, {doc.address_state} {doc.address_zip}</p>")
 
     lines.extend([
         f'<p><a href="{tracking_link}" style="background:#4F46E5;color:white;padding:10px 20px;text-decoration:none;border-radius:5px;">Track Your Order</a></p>',

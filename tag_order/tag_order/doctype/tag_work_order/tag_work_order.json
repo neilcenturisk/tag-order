@@ -1,0 +1,297 @@
+{
+  "name": "Tag Work Order",
+  "module": "Tag Order",
+  "doctype": "DocType",
+  "document_type": "Document",
+  "engine": "InnoDB",
+  "naming_rule": "Expression",
+  "autoname": "WO.#####",
+  "title_field": "project_name",
+  "search_fields": "project_name,client_name,tag_order",
+  "track_changes": 1,
+  "fields": [
+    {
+      "fieldname": "tag_order",
+      "fieldtype": "Link",
+      "label": "Tag Order",
+      "options": "Tag Order",
+      "reqd": 1,
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "project_section",
+      "fieldtype": "Section Break",
+      "label": "Project Information"
+    },
+    {
+      "fieldname": "project_id",
+      "fieldtype": "Data",
+      "label": "Project ID"
+    },
+    {
+      "fieldname": "project_name",
+      "fieldtype": "Data",
+      "label": "Project Name",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "project_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "po_number",
+      "fieldtype": "Data",
+      "label": "PO#"
+    },
+    {
+      "fieldname": "tag_number",
+      "fieldtype": "Data",
+      "label": "Tag #"
+    },
+    {
+      "fieldname": "client_section",
+      "fieldtype": "Section Break",
+      "label": "Client Information"
+    },
+    {
+      "fieldname": "client_name",
+      "fieldtype": "Data",
+      "label": "Client Name"
+    },
+    {
+      "fieldname": "contact_name",
+      "fieldtype": "Data",
+      "label": "Contact Name"
+    },
+    {
+      "fieldname": "client_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "phone",
+      "fieldtype": "Data",
+      "label": "Phone"
+    },
+    {
+      "fieldname": "email",
+      "fieldtype": "Data",
+      "label": "E-Mail"
+    },
+    {
+      "fieldname": "address_section",
+      "fieldtype": "Section Break",
+      "label": "Address"
+    },
+    {
+      "fieldname": "address",
+      "fieldtype": "Data",
+      "label": "Address"
+    },
+    {
+      "fieldname": "city",
+      "fieldtype": "Data",
+      "label": "City"
+    },
+    {
+      "fieldname": "address_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "state",
+      "fieldtype": "Data",
+      "label": "State"
+    },
+    {
+      "fieldname": "zip_code",
+      "fieldtype": "Data",
+      "label": "Zip"
+    },
+    {
+      "fieldname": "people_section",
+      "fieldtype": "Section Break",
+      "label": "People"
+    },
+    {
+      "fieldname": "sales_rep",
+      "fieldtype": "Data",
+      "label": "Sales Representative"
+    },
+    {
+      "fieldname": "project_manager",
+      "fieldtype": "Data",
+      "label": "Project Manager"
+    },
+    {
+      "fieldname": "people_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "timesheet_approver",
+      "fieldtype": "Data",
+      "label": "Timesheet Approver"
+    },
+    {
+      "fieldname": "contract_section",
+      "fieldtype": "Section Break",
+      "label": "Contract"
+    },
+    {
+      "fieldname": "contract_start_date",
+      "fieldtype": "Date",
+      "label": "Contract Start Date"
+    },
+    {
+      "fieldname": "est_end_date",
+      "fieldtype": "Date",
+      "label": "Est. End Date"
+    },
+    {
+      "fieldname": "contract_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "contract_type",
+      "fieldtype": "Data",
+      "label": "Contract Type"
+    },
+    {
+      "fieldname": "revenue_type",
+      "fieldtype": "Data",
+      "label": "Revenue Type"
+    },
+    {
+      "fieldname": "budget_section",
+      "fieldtype": "Section Break",
+      "label": "Budget"
+    },
+    {
+      "fieldname": "total_contract_amount",
+      "fieldtype": "Currency",
+      "label": "Total Contract Amount"
+    },
+    {
+      "fieldname": "expenses_budget",
+      "fieldtype": "Currency",
+      "label": "Expenses Budget"
+    },
+    {
+      "fieldname": "budget_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "project_services_budget",
+      "fieldtype": "Currency",
+      "label": "Project Services Budget"
+    },
+    {
+      "fieldname": "hours_section",
+      "fieldtype": "Section Break",
+      "label": "Hours"
+    },
+    {
+      "fieldname": "total_project_hours",
+      "fieldtype": "Float",
+      "label": "Total Project Hours"
+    },
+    {
+      "fieldname": "appraiser_hours",
+      "fieldtype": "Float",
+      "label": "Appraiser Hours"
+    },
+    {
+      "fieldname": "hours_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "solution_delivery_hours",
+      "fieldtype": "Float",
+      "label": "Solution Delivery Hours"
+    },
+    {
+      "fieldname": "accounting_section",
+      "fieldtype": "Section Break",
+      "label": "Accounting Information"
+    },
+    {
+      "fieldname": "fye",
+      "fieldtype": "Data",
+      "label": "FYE"
+    },
+    {
+      "fieldname": "cap_critical_rates",
+      "fieldtype": "Data",
+      "label": "CAP/Critical Rates"
+    },
+    {
+      "fieldname": "accounting_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "date_due_solution_delivery",
+      "fieldtype": "Date",
+      "label": "Date Due to Solution Delivery"
+    },
+    {
+      "fieldname": "timing_section",
+      "fieldtype": "Section Break",
+      "label": "Timing"
+    },
+    {
+      "fieldname": "start_date",
+      "fieldtype": "Date",
+      "label": "Start Date"
+    },
+    {
+      "fieldname": "delivery_date",
+      "fieldtype": "Date",
+      "label": "Delivery Date"
+    },
+    {
+      "fieldname": "timing_column_break",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "sent_to_accounting",
+      "fieldtype": "Check",
+      "label": "Sent to Accounting",
+      "read_only": 1
+    },
+    {
+      "fieldname": "sent_date",
+      "fieldtype": "Datetime",
+      "label": "Sent Date",
+      "read_only": 1
+    },
+    {
+      "fieldname": "accounting_token",
+      "fieldtype": "Data",
+      "label": "Accounting Token",
+      "hidden": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "print": 1,
+      "export": 1
+    },
+    {
+      "role": "Agent",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "print": 1,
+      "export": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}
