@@ -169,7 +169,7 @@
       "fieldtype": "Currency",
       "label": "Total Price",
       "read_only": 1,
-      "description": "$175 per roll"
+      "description": "$175 per roll + $10 shipping"
     },
     {
       "fieldname": "shipped_date",

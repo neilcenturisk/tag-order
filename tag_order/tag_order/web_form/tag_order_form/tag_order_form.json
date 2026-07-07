@@ -12,7 +12,7 @@
   "login_required": 0,
   "allow_incomplete": 0,
   "is_standard": 1,
-  "introduction_text": "<p style='font-size: 15px; color: #4B5563; margin-bottom: 8px;'>Use this form to place an asset tag order. Tags are <strong>$175 per roll</strong> with a minimum 5-day lead time for external orders.</p><p style='font-size: 13px; color: #6B7280;'>All fields marked with * are required. You'll receive a confirmation with your order number once submitted.</p><p style='font-size: 13px; color: #6B7280; margin-top: 12px;'>Questions about an existing order? Email <a href='mailto:support@centurisk.com'>support@centurisk.com</a> or <a href='/tag-order-tracking'>track your order here</a>.</p>",
+  "introduction_text": "<p style='font-size: 15px; color: #4B5563; margin-bottom: 8px;'>Use this form to place an asset tag order. Tags are <strong>$175 per roll</strong> + $10 shipping, with a minimum 5-day lead time for external orders.</p><p style='font-size: 13px; color: #6B7280;'>All fields marked with * are required. You'll receive a confirmation with your order number once submitted.</p><p style='font-size: 13px; color: #6B7280; margin-top: 12px;'>Questions about an existing order? Email <a href='mailto:support@centurisk.com'>support@centurisk.com</a> or <a href='/tag-order-tracking'>track your order here</a>.</p>",
   "success_title": "Thank You!",
   "success_message": "<div style='text-align: center; padding: 20px;'><h3>Your order has been submitted.</h3><p>We'll be in touch with updates on your order status.</p></div>",
   "success_url": "",

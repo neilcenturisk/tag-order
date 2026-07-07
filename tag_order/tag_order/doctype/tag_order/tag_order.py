@@ -9,10 +9,11 @@ class TagOrder(Document):
         self.validate_required_date()
 
     def calculate_total_price(self):
-        """Calculate total price at $175 per roll."""
+        """Calculate total price at $175 per roll + $10 shipping."""
         price_per_roll = 175
+        shipping = 10
         if self.number_of_rolls:
-            self.total_price = self.number_of_rolls * price_per_roll
+            self.total_price = (self.number_of_rolls * price_per_roll) + shipping
 
     def validate_required_date(self):
         """Ensure required date is at least 5 business days out for external orders."""
