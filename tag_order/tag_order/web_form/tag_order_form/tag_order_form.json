@@ -14,9 +14,10 @@
   "is_standard": 1,
   "introduction_text": "<p style='font-size: 15px; color: #4B5563; margin-bottom: 8px;'>Use this form to place an asset tag order. Tags are <strong>$175 per roll</strong> + $10 shipping, with a minimum 5-day lead time for external orders.</p><p style='font-size: 13px; color: #6B7280;'>All fields marked with * are required. You'll receive a confirmation with your order number once submitted.</p><p style='font-size: 13px; color: #6B7280; margin-top: 12px;'>Questions about an existing order? Email <a href='mailto:support@centurisk.com'>support@centurisk.com</a> or <a href='/tag-order-tracking'>track your order here</a>.</p>",
   "success_title": "Thank You!",
-  "success_message": "<div style='text-align: center; padding: 20px;'><h3>Your order has been submitted.</h3><p>Your order number will appear at the top of this page. Please save it for your records.</p><p style='margin-top: 16px;'>You can check your order status anytime at:</p><p><a href='/tag-order-tracking' style='background: #4F46E5; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 8px;'>Track Your Order</a></p><p style='margin-top: 16px; font-size: 13px; color: #6B7280;'>Questions? Contact us at <a href='mailto:support@centurisk.com'>support@centurisk.com</a></p></div>",
+  "success_message": "<div style=\"text-align: center; padding: 20px;\"><h3>Your order has been submitted.</h3><p>Our team will follow up with your order number and status updates.</p><p style=\"margin-top: 12px;\">Already have an order number? Check your status anytime:</p><p style=\"margin-top: 8px;\"><a href=\"/tag-order-tracking\">Track Your Order</a></p><p style=\"margin-top: 16px; font-size: 13px; color: #6B7280;\">Questions? Contact us at support@centurisk.com</p></div>",
   "success_url": "",
   "banner_image": "",
+  "client_script": "frappe.web_form.after_save = function(doc) { window.location.href = '/tag-order-tracking?order=' + doc.name; }",
   "web_form_fields": [
     {
       "fieldname": "order_type",
